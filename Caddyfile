@@ -1,0 +1,6 @@
+chef.winterj.me {
+    tls wintermy201@gmail.com
+    proxy / chef-hong:8000 {
+        transparent
+    }
+}

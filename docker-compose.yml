@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  caddy:
+    image: abiosoft/caddy
+    container_name: caddy
+    volumes:
+      - ./Caddyfile:/etc/Caddyfile
+      - $HOME/.caddy:/root/.caddy
+      - ./access.log:/srv/access.log
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - chef-hong
+    environment:
+      - ACME_AGREE=true
+  chef-hong:
+    image: wintermy201/chef-hong
+    container_name: chef-hong
+    ports:
+      - 8000:8000
+    environment:
+      - SENTRY_DSN=${SENTRY_DSN}
