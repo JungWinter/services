@@ -4,6 +4,7 @@ services:
   caddy:
     image: abiosoft/caddy
     container_name: caddy
+    restart: always
     volumes:
       - ./Caddyfile:/etc/Caddyfile
       - $HOME/.caddy:/root/.caddy
@@ -18,6 +19,7 @@ services:
   chef-hong:
     image: wintermy201/chef-hong
     container_name: chef-hong
+    restart: always
     ports:
       - 8000:8000
     environment:
